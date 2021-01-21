@@ -13,7 +13,7 @@
 - const colorsPositive = [lo, mid, hi];
 - const colorScale = colorsPositive;
 //- - const ratioColor = (n) => `rgb(${},${},${})`;
-- function ratioColor(n) { const numColors = colorScale.length; const numScales = numColors - 1; const scaledN = numScales * n; const scaleNum = Math.min(Math.ceil(scaledN), numScales-1); const colorLo = colorScale[scaleNum]; const colorHi = colorScale[scaleNum+1]; const scalePosition = scaledN - scaleNum; const [r, g, b] = [0,1,2].map((colorPosition) => Math.floor((1-scalePosition) * colorLo[colorPosition] + scalePosition * colorHi[colorPosition])); return `rgb(${r},${g},${b})`; };
+- function ratioColor(n) { const numColors = colorScale.length; const numScales = numColors - 1; const scaledN = numScales * n; const scaleNum = Math.max(0,Math.min(Math.ceil(scaledN)-1, numScales-1)); const colorLo = colorScale[scaleNum]; const colorHi = colorScale[scaleNum+1]; const scalePosition = scaledN - scaleNum; const [r, g, b] = [0,1,2].map((colorPosition) => Math.floor((1-scalePosition) * colorLo[colorPosition] + scalePosition * colorHi[colorPosition])); return `rgb(${r},${g},${b})`; };
 - const colors = mapObject(ratioColor, ratios);
 - const labels = mapObject((n) => `${(n*100).toFixed(0)}%`, ratios);
 //- - const labels = colors;
