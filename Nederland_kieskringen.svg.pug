@@ -1,7 +1,7 @@
 - const title1 = 'ondersteuningsverklaringen';
-- const title2 = 'piratenpartij 28-01 18:00 (/30)';
+- const title2 = 'piratenpartij 29-01 11:00 (/30)';
 - const mapObject = (f, o) => Object.fromEntries(Object.entries(o).map(([k,v]) => [k,f(v)]));
-- const signed = { 1: 32, 2: 32, 3: 20, 4: 32, 5: 34, 6: 34, 7: 29, 8: 40, 9: 40, 10: 35, 11: 40, 12: 31, 13: 31, 14: 20, 15: 35, 16: 17, 17: 13, 18: 25, 19: 17, 20: 2 };
+- const signed = { 1: 34, 2: 34, 3: 20, 4: 34, 5: 36, 6: 36, 7: 33, 8: 40, 9: 40, 10: 36, 11: 40, 12: 34, 13: 32, 14: 22, 15: 35, 16: 24, 17: 17, 18: 31, 19: 25, 20: 2 };
 - const ratios = mapObject((i) => i/30, signed);
 //- - const colors = { 1: '#cec6fe', 2: '#c6e6c6', 3: '#cefefe', 4: '#e2aec6', 5: '#a69e85', 6: '#a02c5a', 7: '#f2a60e', 8: '#80e5ff', 9: '#ff00cc', 10: '#aaffcc', 11: '#fef692', 12: '#fee6fd', 13: '#3771c8', 14: '#ee8e7e', 15: '#c8ab37', 16: '#dacade', 17: '#bede76', 18: '#ffd5d5', 19: '#9ed6c6', 20: '#000000' };
 - const red = [255,128,128];
@@ -14,7 +14,7 @@
 - const colorsPositive = [lo, mid, hi];
 - const colorScale = colorsPositive;
 //- - const ratioColor = (n) => `rgb(${},${},${})`;
-- function ratioColor(n) { const numColors = colorScale.length; const numScales = numColors - 1; const scaledN = numScales * n; const scaleNum = Math.max(0,Math.min(Math.ceil(scaledN)-1, numScales-1)); const colorLo = colorScale[scaleNum]; const colorHi = colorScale[scaleNum+1]; const scalePosition = scaledN - scaleNum; const [r, g, b] = [0,1,2].map((colorPosition) => Math.floor((1-scalePosition) * colorLo[colorPosition] + scalePosition * colorHi[colorPosition])); return `rgb(${r},${g},${b})`; };
+- function ratioColor(n) { const numColors = colorScale.length; const numScales = numColors - 1; const scaledN = numScales * n; const scaleNum = Math.max(0,Math.min(Math.ceil(scaledN)-1, numScales-1)); const colorLo = colorScale[scaleNum]; const colorHi = colorScale[scaleNum+1]; const scalePosition = scaledN - scaleNum; const [r, g, b] = [0,1,2].map((colorPosition) => Math.floor((1-scalePosition) * colorLo[colorPosition] + scalePosition * colorHi[colorPosition])); if (n >= 40/30) { return `rgb(128,0,128)`; } else { return `rgb(${r},${g},${b})`; } };
 - const colors = mapObject(ratioColor, ratios);
 - const labels = mapObject((n) => `${(n*100).toFixed(0)}%`, ratios);
 //- - const labels = colors;
