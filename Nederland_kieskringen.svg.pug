@@ -11,7 +11,8 @@
 - const lo = red;
 - const mid = yellow;
 - const hi = green;
-- const colorsPositive = [lo, mid, hi];
+//- - const colorsPositive = [lo, mid, hi];
+- const colorsPositive = [lo, lo, lo, lo, lo, mid, hi];
 - const colorScale = colorsPositive;
 //- - const ratioColor = (n) => `rgb(${},${},${})`;
 - function ratioColor(n) { const numColors = colorScale.length; const numScales = numColors - 1; const scaledN = numScales * n; const scaleNum = Math.max(0,Math.min(Math.ceil(scaledN)-1, numScales-1)); const colorLo = colorScale[scaleNum]; const colorHi = colorScale[scaleNum+1]; const scalePosition = scaledN - scaleNum; const [r, g, b] = [0,1,2].map((colorPosition) => Math.floor((1-scalePosition) * colorLo[colorPosition] + scalePosition * colorHi[colorPosition])); if (n >= 40/30) { return `rgb(128,0,128)`; } else if (n > 35/30) { return `rgb(147,112,219)`; } else { return `rgb(${r},${g},${b})`; } };
