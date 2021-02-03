@@ -53,4 +53,7 @@ function compileDate(kv) {
     return `"${pngFile}"`;
 }
 var pngs = Object.entries(data).map(compileDate);
-logCmd(`magick convert -crop 550x630+0+0 -dispose none -delay 10X30 ${pngs.join(' ')} -coalesce -loop 0 ./gif/kieskringen.gif`);
+// linger on end result
+var last = pngs[pngs.length-1];
+pngs = [...pngs, last, last];
+logCmd(`magick convert -crop 550x630+0+0 -dispose none -delay 1X2 ${pngs.join(' ')} -coalesce -loop 0 ./gif/kieskringen.gif`);
